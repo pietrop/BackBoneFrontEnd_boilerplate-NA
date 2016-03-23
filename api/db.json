@@ -1,6 +1,10 @@
 {
   "projects": [
-    {"name": "Messi"},
-    {"name": "Cristian"}
+    {
+      "name": "ProjectOne"
+    },
+    {
+      "name": "ProjectTwo"
+    }
   ]
 }

@@ -1,8 +1,8 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
-var fs = require('fs')
-var api = require('../api')
+var fs = require('fs');
+var api = require('../api');
 
 var ProjectModel = Backbone.Model.extend({
   defaults: {
@@ -11,9 +11,10 @@ var ProjectModel = Backbone.Model.extend({
 })
 
 var ProjectsCollection = Backbone.Collection.extend({
-  model: ProjectModel,
-
+  model: ProjectModel
 });
+
+
 
 
 var ProjectsView = Backbone.View.extend({
@@ -30,6 +31,8 @@ var ProjectsView = Backbone.View.extend({
   sayHi: function() {
     var name = prompt('Project name')
     this.collection.add({name: name})
+    api.addProject( name)
+    // process.mainModule.exports.api()
     this.render()
   },
 

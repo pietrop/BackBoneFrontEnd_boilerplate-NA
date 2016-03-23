@@ -9,8 +9,6 @@
 
 var projects = require('./projects')
 
- var a = require('./db.json')
-
 var HomeView = Backbone.View.extend({
   tagName: 'div',
 

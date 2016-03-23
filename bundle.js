@@ -1,25 +1,37 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports={
-  "projects": [
-    {"name": "Messi"},
-    {"name": "Cristian"}
-  ]
-}
-
-},{}],2:[function(require,module,exports){
 var Backbone = require('backbone');
-var db = require('./db.json');
+// var db = require('./db.json');
+// var fs = require('fs');
+
+console.log("API.js being called")
 
 exports.getProjects = function () {
-  return db.projects
+  var db = getdb();
+  return db.projects;
 }
 
 exports.addProject = function (name) {
+  var db = getdb();
   db.projects.push({name: name})
-  Backbone.sync()
+  savedb(db);
+  // fs.writeFileSync(__dirname +'/db.json',JSON.stringify(db), 'utf8');
+
 }
 
-},{"./db.json":1,"backbone":5}],3:[function(require,module,exports){
+
+
+
+function getdb(){
+  var db = JSON.parse(localStorage.db);
+  return db;
+}
+
+
+function savedb(db){
+  localStorage.db = JSON.stringify(db);
+}
+
+},{"backbone":3}],2:[function(require,module,exports){
 
 /**
  * Module dependencies
@@ -30,8 +42,6 @@ exports.addProject = function (name) {
  var $ = require('jquery');
 
 var projects = require('./projects')
-
- var a = require('./db.json')
 
 var HomeView = Backbone.View.extend({
   tagName: 'div',
@@ -72,12 +82,7 @@ Backbone.sync = function(method, model, options) {
 console.log('sync', arguments.length)
 };
 
-},{"./db.json":4,"./projects":8,"backbone":5,"jquery":6,"underscore":7}],4:[function(require,module,exports){
-module.exports={
-  "a": "b"
-}
-
-},{}],5:[function(require,module,exports){
+},{"./projects":6,"backbone":3,"jquery":4,"underscore":5}],3:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.3.2
 
@@ -2001,7 +2006,7 @@ module.exports={
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":6,"underscore":7}],6:[function(require,module,exports){
+},{"jquery":4,"underscore":5}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.2
  * http://jquery.com/
@@ -11845,7 +11850,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],7:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13395,12 +13400,12 @@ return jQuery;
   }
 }.call(this));
 
-},{}],8:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
 
-var api = require('../api')
+var api = require('../api');
 
 var ProjectModel = Backbone.Model.extend({
   defaults: {
@@ -13409,9 +13414,10 @@ var ProjectModel = Backbone.Model.extend({
 })
 
 var ProjectsCollection = Backbone.Collection.extend({
-  model: ProjectModel,
-
+  model: ProjectModel
 });
+
+
 
 
 var ProjectsView = Backbone.View.extend({
@@ -13428,6 +13434,8 @@ var ProjectsView = Backbone.View.extend({
   sayHi: function() {
     var name = prompt('Project name')
     this.collection.add({name: name})
+    api.addProject( name)
+    // process.mainModule.exports.api()
     this.render()
   },
 
@@ -13450,4 +13458,4 @@ exports.list = function () {
   this.view = new ProjectsView();
 }
 
-},{"../api":2,"backbone":5,"jquery":6,"underscore":7}]},{},[3]);
+},{"../api":1,"backbone":3,"jquery":4,"underscore":5}]},{},[2]);
