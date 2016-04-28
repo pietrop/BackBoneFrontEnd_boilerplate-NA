@@ -9,13 +9,14 @@
 	background-color: $base-color;
 
 	article.projects-list {
+		
 		width: $full-width/1.3;
-		height: $full-height/1.3;
+		height: $projects-list-height;
 
 		position: absolute;
 
 		left: 11%;
-		top: ($full-height - ($full-height/1.3))/2;
+		top: $nav-height;
 		
 		color: $text;
 		background-color: $bkg;
