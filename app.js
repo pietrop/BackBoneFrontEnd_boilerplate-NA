@@ -9,8 +9,12 @@
 
 var projects = require('./projects')
 
+
+// does this file render just the home view? therefore isn't it better to have a separate view file in the view
+
+
 var HomeView = Backbone.View.extend({
-  tagName: 'div',
+  tagName: 'article',
 
   className: 'hi',
 
@@ -24,6 +28,10 @@ var HomeView = Backbone.View.extend({
     return this;
   }
 });
+
+
+//----------------------------------------------
+ // does the routing need to stay in a separate file?
 
  var Router = Backbone.Router.extend({
 
