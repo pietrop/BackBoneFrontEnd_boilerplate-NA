@@ -1,3 +1,9 @@
+#COMPILE SASS AFTER ANY STYLESHEET CHANGE
+
+from ``/view``:
+``sass main.scss main.css``
+
+
 ## FOLDER TREE STRUCTURE
 
 /api
