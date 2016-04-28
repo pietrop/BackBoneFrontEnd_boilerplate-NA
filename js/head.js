@@ -8,9 +8,18 @@ Thinking of splitting ther html code in pieces for maintence purposes
 
 */
 
-document.addEventListener("DOMContentLoaded", function(){
 
-	var stylesheet = "views/main.css",
+
+var head = {
+
+	init: function() {
+
+		this.style();
+	},
+
+	style: function() {
+
+		var stylesheet = "views/main.css",
 		head = document.getElementsByTagName("head")[0],
 		css = document.createElement("link");
 
@@ -19,6 +28,14 @@ document.addEventListener("DOMContentLoaded", function(){
 		css.setAttribute("href", stylesheet);
 
 		head.appendChild(css);
+
+	}
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+
+	head.init();
 
 });
 
