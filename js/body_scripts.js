@@ -10,8 +10,10 @@ var body = document.getElementsByTagName("body")[0];
 var page = {
 
 	init: function(){
+
 		this.libraries();
 		this.customScripts();
+
 	},
 
 	libraries: function() {
@@ -35,13 +37,14 @@ var page = {
 	},
 
 	customScripts: function(){
-		var bundleSrc = "bundle.js",
 
+		var bundleSrc = "bundle.js",
 			bundle = document.createElement("script");
 			
 			bundle.setAttribute("src", bundleSrc);
 
 			body.appendChild(bundle);
+			
 	}
 }
 

@@ -1,4 +1,4 @@
-"use strict";
+
 
 /**
 
@@ -10,7 +10,7 @@ Thinking of splitting ther html code in pieces for maintence purposes
 
 document.addEventListener("DOMContentLoaded", function(){
 
-	var stylesheet = "styles/main.css",
+	var stylesheet = "views/main.css",
 		head = document.getElementsByTagName("head")[0],
 		css = document.createElement("link");
 
