@@ -4,7 +4,33 @@
 	<meta charset="utf-8">
 	<title>autoEdit</title>
 	
-	<!-- <script type="text/javascript" src="javascripts/head.js"></script> -->
+	<script>
+		var head = {
+
+			init: function() {
+
+				this.style();
+			},
+
+			style: function() {
+
+				/** Custom CSS */
+				var stylesheet = "#",//"stylesheet/main.css",
+				head = document.getElementsByTagName("head")[0],
+				css = document.createElement("link");
+
+				css.setAttribute("rel", "stylesheet");
+				css.setAttribute("type", "text/css");
+				css.setAttribute("href", stylesheet);
+
+				head.appendChild(css);
+
+			}
+
+		}
+			head.init();
+
+	</script>
 	
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
@@ -32,46 +58,46 @@
 
 					<!-- content panel  -->
 					<div class="col s9">
-					<div class="project-container col s4">
-						<div class="project-image">
-							DUMMY TEXT. NEEDING AN IMAGE.
+						<div class="project-container col s4">
+							<div class="project-image">
+								DUMMY TEXT. NEEDING AN IMAGE.
+							</div>
+							<section class="projects-option">
+								<ul>
+									<li class="project-option-icon">E</li>
+									<li class="project-option-icon">D</li>
+									<li class="project-option-icon">R</li>
+								</ul>	
+							</section>
 						</div>
-						<section class="projects-option">
-							<ul>
-								<li class="project-option-icon">E</li>
-								<li class="project-option-icon">D</li>
-								<li class="project-option-icon">R</li>
-							</ul>	
-						</section>
-					</div>
 
-					<div class="project-container col s4">
-						<div class="project-image">
-							DUMMY TEXT. NEEDING AN IMAGE.
+						<div class="project-container col s4">
+							<div class="project-image">
+								DUMMY TEXT. NEEDING AN IMAGE.
+							</div>
+							<section class="projects-option">
+								<ul>
+									<li class="project-option-icon">E</li>
+									<li class="project-option-icon">D</li>
+									<li class="project-option-icon">R</li>
+								</ul>	
+							</section>
 						</div>
-						<section class="projects-option">
-							<ul>
-								<li class="project-option-icon">E</li>
-								<li class="project-option-icon">D</li>
-								<li class="project-option-icon">R</li>
-							</ul>	
-						</section>
-					</div>
 
-					<div class="project-container col s4">
-						<div class="project-image">
-							DUMMY TEXT. NEEDING AN IMAGE.
+						<div class="project-container col s4">
+							<div class="project-image">
+								DUMMY TEXT. NEEDING AN IMAGE.
+							</div>
+							<section class="projects-option">
+								<ul>
+									<li class="project-option-icon">E</li>
+									<li class="project-option-icon">D</li>
+									<li class="project-option-icon">R</li>
+								</ul>	
+							</section>
 						</div>
-						<section class="projects-option">
-							<ul>
-								<li class="project-option-icon">E</li>
-								<li class="project-option-icon">D</li>
-								<li class="project-option-icon">R</li>
-							</ul>	
-						</section>
-					</div>
 
-				</div>
+					</div>
 
 				</div>
 
