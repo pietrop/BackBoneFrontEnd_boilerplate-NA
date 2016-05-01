@@ -38,12 +38,12 @@ var page = {
 
 	customScripts: function(){
 
-		var bundleSrc = "bundle.js",
-			bundle = document.createElement("script");
+		// var bundleSrc = "bundle.js",
+		// 	bundle = document.createElement("script");
 			
-			bundle.setAttribute("src", bundleSrc);
+		// 	bundle.setAttribute("src", bundleSrc);
 
-			body.appendChild(bundle);
+		// 	body.appendChild(bundle);
 			
 	}
 }

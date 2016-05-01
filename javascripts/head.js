@@ -19,7 +19,8 @@ var head = {
 
 	style: function() {
 
-		var stylesheet = "views/main.css",
+		/** Custom CSS */
+		var stylesheet = "stylesheet/main.css",
 		head = document.getElementsByTagName("head")[0],
 		css = document.createElement("link");
 
