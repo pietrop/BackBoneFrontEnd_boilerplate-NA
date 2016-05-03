@@ -24,7 +24,7 @@ var ProjectsView = Backbone.View.extend({
 
   events: {
     'click .project-edit-btn': 'editProject',
-    'click .project-edit-btn': 'deleteProject'
+    'click .project-delete-btn': 'deleteProject'
   },
 
   editProject: function() {
@@ -32,7 +32,7 @@ var ProjectsView = Backbone.View.extend({
   },
 
   deleteProject: function() {
-    
+
   },
 
   // sayHi: function() {
