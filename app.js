@@ -26,8 +26,6 @@ var HomeView = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template({  }));  //don't get why it needs to have an empty template call
     return this;
-
-    // home: this.collection.models
   }
 });
 
