@@ -1,7 +1,22 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var Backbone = require('backbone');
-// var db = require('./db.json');
-// var fs = require('fs');
+module.exports={
+  "projects": [
+    {
+      "name": "ProjectOne",
+      "description": "This is a mock description"
+    },
+    {
+      "name": "ProjectTwo",
+      "description": "This is a mock description"
+    }
+  ]
+}
+
+},{}],2:[function(require,module,exports){
+(function (__dirname){
+var Backbone = require( 'backbone' );
+var db = require( './db.json' );
+
 
 console.log("API.js being called")
 
@@ -10,91 +25,92 @@ exports.getProjects = function () {
   return db.projects;
 }
 
-exports.addProject = function (name) {
+exports.addProject = function ( name ) {
   var db = getdb();
-  db.projects.push({name: name})
-  savedb(db);
-  // fs.writeFileSync(__dirname +'/db.json',JSON.stringify(db), 'utf8');
-
+  db.projects.push( { 
+  		name: name,
+  		description: description
+  	} );
+  savedb( db );
+  fs.writeFileSync( __dirname + '/db.json', JSON.stringify( db ), 'utf8' );
 }
 
-
-
-
 function getdb(){
-  var db = JSON.parse(localStorage.db);
+  // var db = JSON.parse( localStorage.db );
+  var db = "{\n  \"projects\": [\n    {\n      \"name\": \"ProjectOne\",\n      \"description\": \"This is a mock description\"\n    },\n    {\n      \"name\": \"ProjectTwo\",\n      \"description\": \"This is a mock description\"\n    }\n  ]\n}\n";
+
   return db;
 }
 
-
 function savedb(db){
-  localStorage.db = JSON.stringify(db);
+  localStorage.db = JSON.stringify( db ) ;
 }
 
-},{"backbone":3}],2:[function(require,module,exports){
+}).call(this,"/api")
+},{"./db.json":1,"backbone":4}],3:[function(require,module,exports){
 /**
  * Module dependencies
  */
 
- var Backbone = require( 'backbone' );
- var _ = require( 'underscore' );
- var $ = require( 'jquery' );
- 
+var Backbone = require('backbone');
+var _ = require('underscore');
+var $ = require('jquery');
 
-var projects = require( './projects' );
+
+var projects = require('./projects');
 // var home = require('./home');
 
 var HomeView = Backbone.View.extend({
-  tagName: 'div',
+    tagName: 'div',
 
-  // className: 'hi',
+    className: 'container',
 
-  // events: {
-  //   'click #project-btn': 'showProjects'
-  // },
+    events: {
+        'click #project-btn': 'showProjects'
+    },
 
-  // showProjects: function() {
-  //   location.href = "#projects" ;
-  //   // this.render();
-  // },
+    showProjects: function() {
+        location.href = "#projects";
+        // this.render();
+    },
 
-  initialize: function() {
-    $( "#root" ).html( this.el );
-    this.render();
-  },
+    initialize: function() {
+        $("#root").html(this.el);
+        this.render();
+    },
 
-  template: _.template( "<div class=\"container\">\n\t\n\t<h1>template attempt</h1>\n\n\t<a href=\"#projects\" id=\"project-btn\"> Take me to the projects </a>\n</div>" ),
+    template: _.template("<!-- <div class=\"container\"> -->\n\t\n\n\t<button type=\"button\" id=\"project-btn\"> Take me to the projects </button>\n<!-- </div> -->"),
 
-  render: function() {
-    this.$el.html( this.template() );  //don't get why it needs to have an empty template call
-    return this;
-  }
+    render: function() {
+        this.$el.html(this.template());
+        return this;
+    }
 });
 
- var Router = Backbone.Router.extend({
+var Router = Backbone.Router.extend({
 
-   routes: {
-     "": "home",
-     "projects":  "projects"    // #projects
-   },
+    routes: {
+        "": "home",
+        "projects": "projects" // #projects
+    },
 
-   projects:projects.list,
+    projects: projects.list,
 
-   home: function () {
-     this.view = new HomeView();
-   }
+    home: function() {
+        this.view = new HomeView();
+    }
 
 });
 
 var router = new Router;
 Backbone.history.start();
 
-Backbone.sync = function( method, model, options ) {
+Backbone.sync = function(method, model, options) {
 
-console.log( 'sync', arguments.length )
+    console.log('sync', arguments.length)
 };
 
-},{"./projects":6,"backbone":3,"jquery":4,"underscore":5}],3:[function(require,module,exports){
+},{"./projects":7,"backbone":4,"jquery":5,"underscore":6}],4:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.3.3
 
@@ -2018,7 +2034,7 @@ console.log( 'sync', arguments.length )
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":4,"underscore":5}],4:[function(require,module,exports){
+},{"jquery":5,"underscore":6}],5:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.3
  * http://jquery.com/
@@ -11862,7 +11878,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13412,7 +13428,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var Backbone = require( 'backbone' );
 var _ = require( 'underscore' );
 var $ = require( 'jquery' );
@@ -13421,19 +13437,19 @@ var api = require( '../api' );
 
 var ProjectModel = Backbone.Model.extend({
   defaults: {
-    name: 'woof'
+    name: '',
+    description: ''
   }
-})
+});
 
 var ProjectsCollection = Backbone.Collection.extend({
   model: ProjectModel
 });
 
-
 var ProjectsView = Backbone.View.extend({
   tagName: 'div',
 
-  className: 'projects',
+  className: 'container',
 
   collection: new ProjectsCollection(),
 
@@ -13450,24 +13466,21 @@ var ProjectsView = Backbone.View.extend({
   // },
 
   initialize: function() {
-    // this.collection.add(api.getProjects()); //returns array
+    // this.collection.add( api.getProjects() ); //returns array
     $( "#root" ).html( this.el );
     this.render();
   },
 
-  template: _.template( "<!-- <% projects.forEach(function(project) { %>\n  <li><%= project.get('name') %></li>\n<% }); %>\n<button class=\"say\">Press me!</button>\n -->\n<!-- Page Layout here -->\n<div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col s12 m12 l12\">\n                <h3>Projects</h3>\n            </div>\n        </div>\n        <div class=\"row\">\n            <!-- Teal page content -->\n<div class=\"col s12 m4 l4\">\n                <div class=\"card\">\n                    <div class=\"card-image waves-effect waves-block waves-light\">\n                        <img class=\"activator\" src=\"assets/imgs/office.jpg\">\n                    </div>\n                    <div class=\"card-content\">\n                        <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>\n                        <p><a href=\"#\">This is a link</a></p>\n                    </div>\n                    <div class=\"card-reveal\">\n                        <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>\n                        <p>Here is some more information about this product that is only revealed once clicked on.</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n" ),
+  template: _.template( "<!-- DYNAMIC GENERATED CONTENT -->\n<!-- <div class=\"container\"> -->\n<div class=\"row\">\n    <div class=\"col s12 m12 l12\">\n        <h3>Projects</h3>\n    </div>\n</div>\n<div class=\"row\">\n    <% projects.forEach( function( project ) { %>\n            <div class=\"col s12 m4 l4\">\n                <div class=\"card\">\n                    <div class=\"card-image waves-effect waves-block waves-light\">\n                        <img class=\"activator\" src=\"assets/imgs/office.jpg\">\n                    </div>\n                    <div class=\"card-content\">\n                        <span class=\"card-title activator grey-text text-darken-4\">\n                            <%= project.get( 'name' ) %>\n                            <i class=\"material-icons right\">more_vert</i>\n                        </span>\n                        <p>\n                            <a href=\"#\">Edit</a>\n                        </p>\n                        <p>\n                            <a href=\"#\">Delete</a>\n                        </p>\n                    </div>\n                    <div class=\"card-reveal\">\n                        <span class=\"card-title grey-text text-darken-4\">\n                            <%= project.get( 'name' ) %>\n                            <i class=\"material-icons right\">close</i>\n                        </span>\n                        <p>\n                            <%= project.get( 'description' ) %>\n                        </p>\n                    </div>\n                </div>\n            </div>\n    <% }); %>\n</div>\n<!-- </div> -->\n" ),
 
   render: function() {
-    this.$el.html( this.template({ projects: this.collection.models }) );
+    this.$el.html( this.template( { projects: this.collection.models } ) );
     return this;
-
-    // projects: this.collection.models
   }
-})
-
+});
 
 exports.list = function () {
   this.view = new ProjectsView();
 }
 
-},{"../api":1,"backbone":3,"jquery":4,"underscore":5}]},{},[2]);
+},{"../api":2,"backbone":4,"jquery":5,"underscore":6}]},{},[3]);
