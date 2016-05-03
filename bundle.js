@@ -32,17 +32,16 @@ function savedb(db){
 }
 
 },{"backbone":3}],2:[function(require,module,exports){
-
 /**
  * Module dependencies
  */
 
- var Backbone = require('backbone');
- var _ = require('underscore');
- var $ = require('jquery');
+ var Backbone = require( 'backbone' );
+ var _ = require( 'underscore' );
+ var $ = require( 'jquery' );
  
 
-var projects = require('./projects');
+var projects = require( './projects' );
 // var home = require('./home');
 
 var HomeView = Backbone.View.extend({
@@ -50,15 +49,24 @@ var HomeView = Backbone.View.extend({
 
   // className: 'hi',
 
+  // events: {
+  //   'click #project-btn': 'showProjects'
+  // },
+
+  // showProjects: function() {
+  //   location.href = "#projects" ;
+  //   // this.render();
+  // },
+
   initialize: function() {
-    $("#root").html(this.el);
+    $( "#root" ).html( this.el );
     this.render();
   },
 
-  template: _.template("<div class=\"container\">\n\t\n\t<h1>template attempt</h1>\n</div>"),
+  template: _.template( "<div class=\"container\">\n\t\n\t<h1>template attempt</h1>\n\n\t<a href=\"#projects\" id=\"project-btn\"> Take me to the projects </a>\n</div>" ),
 
   render: function() {
-    this.$el.html(this.template({  }));  //don't get why it needs to have an empty template call
+    this.$el.html( this.template() );  //don't get why it needs to have an empty template call
     return this;
   }
 });
@@ -70,7 +78,7 @@ var HomeView = Backbone.View.extend({
      "projects":  "projects"    // #projects
    },
 
-   projects: projects.list,
+   projects:projects.list,
 
    home: function () {
      this.view = new HomeView();
@@ -81,9 +89,9 @@ var HomeView = Backbone.View.extend({
 var router = new Router;
 Backbone.history.start();
 
-Backbone.sync = function(method, model, options) {
+Backbone.sync = function( method, model, options ) {
 
-console.log('sync', arguments.length)
+console.log( 'sync', arguments.length )
 };
 
 },{"./projects":6,"backbone":3,"jquery":4,"underscore":5}],3:[function(require,module,exports){
@@ -13405,11 +13413,11 @@ return jQuery;
 }.call(this));
 
 },{}],6:[function(require,module,exports){
-var Backbone = require('backbone');
-var _ = require('underscore');
-var $ = require('jquery');
+var Backbone = require( 'backbone' );
+var _ = require( 'underscore' );
+var $ = require( 'jquery' );
 
-var api = require('../api');
+var api = require( '../api' );
 
 var ProjectModel = Backbone.Model.extend({
   defaults: {
@@ -13429,29 +13437,31 @@ var ProjectsView = Backbone.View.extend({
 
   collection: new ProjectsCollection(),
 
-  events: {
-    'click .say': 'sayHi'
-  },
+  // events: {
+  //   'click .say': 'sayHi'
+  // },
 
-  sayHi: function() {
-    var name = prompt('Project name')
-    this.collection.add({name: name})
-    api.addProject( name)
-    // process.mainModule.exports.api()
-    this.render()
-  },
+  // sayHi: function() {
+  //   var name = prompt('Project name');
+  //   this.collection.add({ name: name });
+  //   // api.addProject( name );
+  //   // process.mainModule.exports.api()
+  //   this.render();
+  // },
 
   initialize: function() {
-    this.collection.add(api.getProjects()) //returns array
-    $("#root").html(this.el);
+    // this.collection.add(api.getProjects()); //returns array
+    $( "#root" ).html( this.el );
     this.render();
   },
 
-  template: _.template("<!-- <% projects.forEach(function(project) { %>\n  <li><%= project.get('name') %></li>\n<% }); %>\n<button class=\"say\">Press me!</button>\n -->\n\n   <!-- Page Layout here -->\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col s12 m12 l12\">\n                <h3>Projects</h3>\n            </div>\n        </div>\n        <div class=\"row\">\n            <!-- Teal page content  -->\n            <div class=\"col s12 m4 l4\">\n                <div class=\"card\">\n                    <div class=\"card-image waves-effect waves-block waves-light\">\n                        <img class=\"activator\" src=\"assets/imgs/office.jpg\">\n                    </div>\n                    <div class=\"card-content\">\n                        <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>\n                        <p><a href=\"#\">This is a link</a></p>\n                    </div>\n                    <div class=\"card-reveal\">\n                        <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>\n                        <p>Here is some more information about this product that is only revealed once clicked on.</p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col s12 m4 l4\">\n                <div class=\"card\">\n                    <div class=\"card-image waves-effect waves-block waves-light\">\n                        <img class=\"activator\" src=\"assets/imgs/office.jpg\">\n                    </div>\n                    <div class=\"card-content\">\n                        <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>\n                        <p><a href=\"#\">This is a link</a></p>\n                    </div>\n                    <div class=\"card-reveal\">\n                        <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>\n                        <p>Here is some more information about this product that is only revealed once clicked on.</p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col s12 m4 l4\">\n                <div class=\"card\">\n                    <div class=\"card-image waves-effect waves-block waves-light\">\n                        <img class=\"activator\" src=\"assets/imgs/office.jpg\">\n                    </div>\n                    <div class=\"card-content\">\n                        <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>\n                        <p><a href=\"#\">This is a link</a></p>\n                    </div>\n                    <div class=\"card-reveal\">\n                        <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>\n                        <p>Here is some more information about this product that is only revealed once clicked on.</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n"),
+  template: _.template( "<!-- <% projects.forEach(function(project) { %>\n  <li><%= project.get('name') %></li>\n<% }); %>\n<button class=\"say\">Press me!</button>\n -->\n<!-- Page Layout here -->\n<div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col s12 m12 l12\">\n                <h3>Projects</h3>\n            </div>\n        </div>\n        <div class=\"row\">\n            <!-- Teal page content -->\n<div class=\"col s12 m4 l4\">\n                <div class=\"card\">\n                    <div class=\"card-image waves-effect waves-block waves-light\">\n                        <img class=\"activator\" src=\"assets/imgs/office.jpg\">\n                    </div>\n                    <div class=\"card-content\">\n                        <span class=\"card-title activator grey-text text-darken-4\">Card Title<i class=\"material-icons right\">more_vert</i></span>\n                        <p><a href=\"#\">This is a link</a></p>\n                    </div>\n                    <div class=\"card-reveal\">\n                        <span class=\"card-title grey-text text-darken-4\">Card Title<i class=\"material-icons right\">close</i></span>\n                        <p>Here is some more information about this product that is only revealed once clicked on.</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n" ),
 
   render: function() {
-    this.$el.html(this.template({projects: this.collection.models}));
+    this.$el.html( this.template({ projects: this.collection.models }) );
     return this;
+
+    // projects: this.collection.models
   }
 })
 

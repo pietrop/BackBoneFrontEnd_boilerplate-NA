@@ -1,8 +1,8 @@
-var Backbone = require('backbone');
-var _ = require('underscore');
-var $ = require('jquery');
-var fs = require('fs');
-var api = require('../api');
+var Backbone = require( 'backbone' );
+var _ = require( 'underscore' );
+var $ = require( 'jquery' );
+var fs = require( 'fs' );
+var api = require( '../api' );
 
 var ProjectModel = Backbone.Model.extend({
   defaults: {
@@ -22,29 +22,31 @@ var ProjectsView = Backbone.View.extend({
 
   collection: new ProjectsCollection(),
 
-  events: {
-    'click .say': 'sayHi'
-  },
+  // events: {
+  //   'click .say': 'sayHi'
+  // },
 
-  sayHi: function() {
-    var name = prompt('Project name')
-    this.collection.add({name: name})
-    api.addProject( name)
-    // process.mainModule.exports.api()
-    this.render()
-  },
+  // sayHi: function() {
+  //   var name = prompt('Project name');
+  //   this.collection.add({ name: name });
+  //   // api.addProject( name );
+  //   // process.mainModule.exports.api()
+  //   this.render();
+  // },
 
   initialize: function() {
-    this.collection.add(api.getProjects()) //returns array
-    $("#root").html(this.el);
+    // this.collection.add(api.getProjects()); //returns array
+    $( "#root" ).html( this.el );
     this.render();
   },
 
-  template: _.template(fs.readFileSync(__dirname + '/../templates/projects.html', 'utf8')),
+  template: _.template( fs.readFileSync( __dirname + '/../templates/projects.html', 'utf8' ) ),
 
   render: function() {
-    this.$el.html(this.template({projects: this.collection.models}));
+    this.$el.html( this.template({ projects: this.collection.models }) );
     return this;
+
+    // projects: this.collection.models
   }
 })
 

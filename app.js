@@ -1,14 +1,13 @@
-
 /**
  * Module dependencies
  */
 
- var Backbone = require('backbone');
- var _ = require('underscore');
- var $ = require('jquery');
- var fs = require('fs');
+ var Backbone = require( 'backbone' );
+ var _ = require( 'underscore' );
+ var $ = require( 'jquery' );
+ var fs = require( 'fs' );
 
-var projects = require('./projects');
+var projects = require( './projects' );
 // var home = require('./home');
 
 var HomeView = Backbone.View.extend({
@@ -16,15 +15,24 @@ var HomeView = Backbone.View.extend({
 
   // className: 'hi',
 
+  // events: {
+  //   'click #project-btn': 'showProjects'
+  // },
+
+  // showProjects: function() {
+  //   location.href = "#projects" ;
+  //   // this.render();
+  // },
+
   initialize: function() {
-    $("#root").html(this.el);
+    $( "#root" ).html( this.el );
     this.render();
   },
 
-  template: _.template(fs.readFileSync('./templates/home.html', 'utf8')),
+  template: _.template( fs.readFileSync( './templates/home.html', 'utf8' ) ),
 
   render: function() {
-    this.$el.html(this.template({  }));  //don't get why it needs to have an empty template call
+    this.$el.html( this.template() );  //don't get why it needs to have an empty template call
     return this;
   }
 });
@@ -36,7 +44,7 @@ var HomeView = Backbone.View.extend({
      "projects":  "projects"    // #projects
    },
 
-   projects: projects.list,
+   projects:projects.list,
 
    home: function () {
      this.view = new HomeView();
@@ -47,7 +55,7 @@ var HomeView = Backbone.View.extend({
 var router = new Router;
 Backbone.history.start();
 
-Backbone.sync = function(method, model, options) {
+Backbone.sync = function( method, model, options ) {
 
-console.log('sync', arguments.length)
+console.log( 'sync', arguments.length )
 };
