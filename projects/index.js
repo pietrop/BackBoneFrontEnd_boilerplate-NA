@@ -22,9 +22,18 @@ var ProjectsView = Backbone.View.extend({
 
   collection: new ProjectsCollection(),
 
-  // events: {
-  //   'click .say': 'sayHi'
-  // },
+  events: {
+    'click .project-edit-btn': 'editProject',
+    'click .project-edit-btn': 'deleteProject'
+  },
+
+  editProject: function() {
+
+  },
+
+  deleteProject: function() {
+    
+  },
 
   // sayHi: function() {
   //   var name = prompt('Project name');
