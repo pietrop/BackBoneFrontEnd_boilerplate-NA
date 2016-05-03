@@ -15,10 +15,8 @@ var ProjectsCollection = Backbone.Collection.extend({
 });
 
 
-
-
 var ProjectsView = Backbone.View.extend({
-  tagName: 'ul',
+  tagName: 'div',
 
   className: 'projects',
 

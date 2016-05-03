@@ -6,22 +6,28 @@
  var Backbone = require('backbone');
  var _ = require('underscore');
  var $ = require('jquery');
+ var fs = require('fs');
 
-var projects = require('./projects')
+var projects = require('./projects');
+// var home = require('./home');
 
 var HomeView = Backbone.View.extend({
   tagName: 'div',
 
-  className: 'hi',
+  // className: 'hi',
 
   initialize: function() {
     $("#root").html(this.el);
     this.render();
   },
 
+  template: _.template(fs.readFileSync('./templates/home.html', 'utf8')),
+
   render: function() {
-    this.$el.html('<p>Hi, go to <a href="#projects">my projects</a>!</p>');
+    this.$el.html(this.template({  }));  //don't get why it needs to have an empty template call
     return this;
+
+    // home: this.collection.models
   }
 });
 
